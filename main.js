@@ -27,15 +27,18 @@ function renderBooks(searchQuery = "") {
 function createBookElement({ id, title, author, year, isComplete }) {
   const bookElement = document.createElement("div");
   bookElement.setAttribute("data-bookid", id);
+  bookElement.setAttribute("data-testid", "bookItem");
   bookElement.className = "book-item";
   bookElement.innerHTML = `
-    <h3>${title}</h3>
-    <p>Penulis: ${author}</p>
-    <p>Tahun: ${year}</p>
+    <h3 data-testid="bookItemTitle">${title}</h3>
+    <p data-testid="bookItemAuthor">Penulis: ${author}</p>
+    <p data-testid="bookItemYear">Tahun: ${year}</p>
     <div>
-      <button class="toggle">${isComplete ? "Belum selesai dibaca" : "Selesai dibaca"}</button>
-      <button class="delete">Hapus Buku</button>
-      <button class="edit">Edit Buku</button>
+      <button class="toggle" data-testid="bookItemIsCompleteButton">
+        ${isComplete ? "Belum selesai dibaca" : "Selesai dibaca"}
+      </button>
+      <button class="delete" data-testid="bookItemDeleteButton">Hapus Buku</button>
+      <button class="edit" data-testid="bookItemEditButton">Edit Buku</button>
     </div>
   `;
 
